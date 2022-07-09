@@ -111,6 +111,7 @@ void removeCar(List* pRoot, char* plateNum)
 
 }
 
+// it will print all
 void printAll(List* pRoot) {
 	
 }
