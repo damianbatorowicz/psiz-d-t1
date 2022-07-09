@@ -79,3 +79,40 @@ int main(int argc, char** argv) {
 		
 		//Adding 8 bits per every extra element
 		counter += absolute(var1.length()-var2.length())*8;
+		}
+	}
+	//If file2 is shorter than file1
+	if( file2.eof() )
+	{
+		while( !file1.eof() )
+		{
+			getline( file1, var1);
+			counter += var1.length()*8;
+		}
+	}
+
+	file1.seekg(0, ios::end);
+	file2.seekg(0, ios::end);
+
+	timestamp = time(nullptr);
+	cout << asctime(localtime(&timestamp)) << endl;
+	log << asctime(localtime(&timestamp)) << endl;
+
+	cout << amount << endl;
+	log << amount << endl;
+	cout << counter << endl;
+	log << counter << endl;
+	cout << (double)counter/((file1.tellg()+file2.tellg())*8) << endl;
+	log << (double)counter/((file1.tellg()+file2.tellg())*8) << endl;
+
+	file1.close();
+	file2.close();
+	gettimeofday(&end, 0);
+
+	double elapsed = end.tv_sec - begin.tv_sec + (end.tv_usec - begin.tv_usec)*1e-6;
+	cout << elapsed << endl;
+	log << elapsed << endl << endl;
+
+	log.close();
+	return 0;
+}
