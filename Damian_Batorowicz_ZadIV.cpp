@@ -81,6 +81,17 @@ int main(int argc, char** argv) {
 		counter += absolute(var1.length()-var2.length())*8;
 		}
 	}
+	
+	//If file1 is shorter than file2
+	if( file1.eof() )
+	{
+		while( !file2.eof() )
+		{
+			getline( file2, var2);
+			counter += var2.length()*8;
+		}
+	}
+
 	//If file2 is shorter than file1
 	if( file2.eof() )
 	{
