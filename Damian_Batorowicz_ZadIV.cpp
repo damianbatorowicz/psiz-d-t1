@@ -23,18 +23,14 @@ int main(int argc, char** argv) {
 	log.open("log.txt", ios::out|ios::app);
 
 	string var1, var2;
-	
 	//XOR var to compare XOR between elements (difference)
 	char XOR;
-	
 	//Counter - how many bits differ
 	int counter = 0;
-	
 	//Amount - how many bits are compared
 	long amount = 0;
 
 	struct timeval begin, end;
-	
 	//If there is a file1
 	do
 	{
@@ -44,7 +40,6 @@ int main(int argc, char** argv) {
     		break;
 		cout << "There is no file with that name! Repeat the name\n";
 	}while(true);
-	
 	//If there is a file2
 	do
 	{
@@ -54,16 +49,13 @@ int main(int argc, char** argv) {
     		break;
 		cout << "There is no file with that name! Repeat the name\n";
 	}while(true);
-	
 	//Setting the timer
 	gettimeofday(&begin, 0);
-	
 	//Loop to count every line before one ends
 	while( !file1.eof() && !file2.eof() )
 	{
 		getline( file1, var1);
 		getline( file2, var2);
-		
 		//Loop to count 
 		for(int i=0; i<min(var1.length(),var2.length()); i++)
 		{
@@ -76,12 +68,10 @@ int main(int argc, char** argv) {
 			}
 			amount += 8;
 		}
-		
 		//Adding 8 bits per every extra element
 		counter += absolute(var1.length()-var2.length())*8;
-		}
+
 	}
-	
 	//If file1 is shorter than file2
 	if( file1.eof() )
 	{
@@ -91,7 +81,6 @@ int main(int argc, char** argv) {
 			counter += var2.length()*8;
 		}
 	}
-
 	//If file2 is shorter than file1
 	if( file2.eof() )
 	{
